@@ -1,0 +1,309 @@
+// import medias file
+@use "./assets/scss/medias" as *;
+// variables
+$main-color: #9633ff;
+$fast-transition: 0.3s;
+$slow-transition: 1s;
+
+// mixins
+@mixin circle($width) {
+  width: $width;
+  height: $width;
+  border-radius: 50%;
+}
+
+/* start components */
+* {
+  --webkit-box-sizing: border-box;
+  --moz-box-sizing: border-box;
+}
+
+body {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+.main-color {
+  color: $main-color !important;
+}
+.main-bg {
+  background-color: $main-color !important;
+}
+/* end components */
+
+/* start styles nav */
+nav {
+  &.scrolled {
+    transition: $slow-transition;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.271) !important;
+    backdrop-filter: blur(20px);
+  }
+  .btns {
+    height: max-content !important;
+    a {
+      border-color: $main-color !important;
+      transition: $fast-transition;
+      &.join:hover {
+        background-color: $main-color !important;
+        color: white !important;
+      }
+      &.discover-features:hover {
+        background-color: #7d29d6 !important;
+        border-color: #7d29d6 !important;
+      }
+    }
+  }
+}
+@media ($mobile-screen) {
+  nav {
+    .container {
+      padding: 10px !important;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      gap: 15px !important;
+    }
+  }
+}
+/* end styles nav */
+
+/* start styles landing */
+.landing {
+  background-image: url(../images/hero-bg.svg),
+    url(../images/landing-circles.svg);
+  background-size: cover, contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  height: 90.9vh;
+  .content {
+    h1 {
+      font-size: 60px;
+    }
+    .btn-get-new {
+      border-color: $main-color !important;
+      transition: $fast-transition;
+      &:hover {
+        background-color: transparent !important;
+        color: $main-color !important;
+      }
+    }
+  }
+}
+.highlight-text {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: -35px;
+    left: 0;
+    background-image: url(../images/text-line.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+@media ($mobile-screen) {
+  .landing {
+    h1 {
+      width: 100% !important;
+      font-size: 50px !important;
+    }
+  }
+}
+
+/* end styles landing */
+
+/* start styles steps section */
+.steps {
+  background-image: url(../images/steps-bg.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  .container {
+    .row {
+      .col-lg-4 {
+        .box {
+          height: 350px;
+          .step-num {
+            @include circle(70px);
+          }
+        }
+        &:nth-child(2) {
+          .box {
+            border-color: $main-color !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px -10px;
+          }
+        }
+      }
+    }
+  }
+}
+@media ($medium-screen) {
+  .steps {
+    .container {
+      .row {
+        .col-lg-4 {
+          &:nth-child(2) {
+            .box {
+              transform: scale(1.03) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.sec-head {
+  h2 {
+    font-size: 40px;
+  }
+  .highlight-text {
+    &::after {
+      bottom: -20px;
+    }
+  }
+  p {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+@media ($medium-screen) {
+  .sec-head {
+    p {
+      width: 75% !important;
+    }
+  }
+}
+/* end styles steps section */
+
+/* start styles features section */
+.features {
+  background-image: url(../images/features-bg.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media ($medium-screen) {
+  .features {
+    .container {
+      .row {
+        .col-lg-5 {
+          &.col-image {
+            position: relative;
+            order: 1;
+            &:not(:first-child) {
+              img {
+                width: 50% !important;
+              }
+            }
+          }
+          &:not(.col-image) {
+            position: relative;
+            order: 2;
+          }
+          .box {
+            p {
+              width: 100% !important;
+              padding: 0 20px;
+              position: relative;
+              right: 50%;
+              transform: translateX(50%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* end styles features section */
+
+/* start styles subjects section */
+.subjects {
+  .container {
+    .col-lg-4 {
+      .box {
+        transition: $slow-transition;
+        height: 320px;
+        .subject-icon {
+          height: 65%;
+          background: url(../images/Vector.svg), $main-color;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .subject-name {
+          height: 35%;
+          transition: $slow-transition;
+        }
+        &:hover {
+          border-color: $main-color !important;
+          .subject-name {
+            color: $main-color;
+          }
+        }
+      }
+    }
+    .discover-all {
+      width: fit-content;
+      transform: translateX(50%);
+      border-color: $main-color !important;
+      transition: $fast-transition;
+      cursor: pointer;
+      &:hover {
+        color: $main-color !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+/* end styles subjects section */
+
+/* start styles join section */
+.join-section {
+  background: url(../images/footer-bg.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  .container {
+    .row {
+      .join-now {
+        width: fit-content;
+        transform: translateX(50%);
+        border-color: $main-color !important;
+        transition: $fast-transition;
+        cursor: pointer;
+        &:hover {
+          color: $main-color !important;
+          background-color: transparent !important;
+        }
+      }
+    }
+  }
+}
+/* end styles join section */
+
+/* start styles footer section */
+footer {
+  .social-icons {
+    svg {
+      transition: $fast-transition;
+      &:hover {
+        color: $main-color !important;
+      }
+    }
+  }
+}
+@media ($mobile-screen) {
+  footer {
+    .content {
+      flex-direction: column !important;
+      gap: 5px;
+    }
+  }
+}
+/* end styles footer section */
